@@ -5,21 +5,27 @@
 
 `npm init -f`
 
-## Crear Archivos y Carpeta
 
-Creamos la carpeta src y dentro de ella las carpetas
-modelos, routes, y views, tambien creamos el archivo para la conexcion para la base de datos db.js y el index.js
 
 ## Instalar Nodemon
 
-`npm install -g nodemon --save`
+`npm install nodemon -D`
 
 Esto sirve para no estar deteniendo e iniciando el servidor cuando hacemos un cambio. 
 
 despues de instalar nodemon agregamos al package.json
 
-`"start": "node index" `
+`"npx nodemon src/index.js" `
 
 e iniciamos con 
 
 `npm start`
+
+## INSTALAMOS EXPRESS
+
+Se instala de forma global
+`npm install -g express`
+`npm install -g express-generator`
+
+### Creamos nuestro proyecto Express
+`express <<Nombre_del_proyecto>>` 
