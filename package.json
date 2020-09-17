@@ -1,0 +1,20 @@
+{
+  "name": "proyecto1_ia",
+  "version": "1.0.0",
+  "description": "Proyecto 1 de Inteligencia Artificial 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WilderSiguantay/Proyecto1_IA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WilderSiguantay/Proyecto1_IA/issues"
+  },
+  "homepage": "https://github.com/WilderSiguantay/Proyecto1_IA#readme"
+}
