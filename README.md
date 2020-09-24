@@ -1,13 +1,20 @@
 # Proyecto1_IA
  Proyecto 1 de Inteligencia Artificial 1
 
-## Iniciar proyecto
 
-`npm init -f`
+## INSTALAMOS EXPRESS
+Lo instalamos de tal forma que aparezca en nuestras dependencias, para eso se usa el -D
+`npm install express -D`
+`npm install express-generator -D`
+tambien hay que instalarlo de forma global para que se pueda utilizar sin necesidad de instalarlo una y otra vez.
+
+### Creamos nuestro proyecto Express
+`express <<Nombre_del_proyecto>>` 
+Esto nos va a crear todos los archivos necesarios y carpetas para iniciar el proyecto
 
 
 
-## Instalar Nodemon
+## Instalar Nodemon (ya no se hace)
 
 `npm install nodemon -D`
 
@@ -21,11 +28,12 @@ e iniciamos con
 
 `npm start`
 
-## INSTALAMOS EXPRESS
+## INSTALAMOS NODE
+Entramos a la carpeta que se creo, con el comando anterior e instalamos express
 
-Se instala de forma global
-`npm install -g express`
-`npm install -g express-generator`
-
-### Creamos nuestro proyecto Express
-`express <<Nombre_del_proyecto>>` 
+`npm install`
+## INSTALAMOS MANEJADOR DE PLANTILLAS EJS
+Por defecto trae el manejador jade, pero vamos a cambiarlo y usar ejs por motivos de tiempo
+para instalar este manejador de plantillas necesitamos los siguientes comandos
+`npm install ejs -D`
+`npm install ejs-mate -D`

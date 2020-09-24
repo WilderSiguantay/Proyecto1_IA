@@ -1,0 +1,1 @@
+consult('C:/Users/gonza/Documents/GitHub/Proyecto1_IA/sistemaExperto/prolog/base.pl')
