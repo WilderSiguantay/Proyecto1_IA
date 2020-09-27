@@ -4,56 +4,181 @@
 
     </h1>
 </div>
-<form>
+<form method="POST" action="/consultar">
     <h1>Buscar Características</h1>
     <div class="form-group">
-        <div class="col-3 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="lgBaja">
-            <label class="form-check-label" for="inlineCheckbox1">Longevidad Baja</label>
-          </div>
-          <div class="col-3 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Pez">
-            <label class="form-check-label" for="inlineCheckbox2">Pez</label>
-          </div>
-          <div class="col-3 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Invertebrado">
-            <label class="form-check-label" for="inlineCheckbox3">Invertebrado</label>
-          </div>
+      <h5>Longevidad</h5>
+      <select class="custom-select" name="longevidad" id="longevidad">
+        <option value="0" selected>Selecciona Longevidad...</option>
+        <option value="baja">Baja</option>
+        <option value="media">Media</option>
+        <option value="alta">Alta</option>
+      </select>
+
     </div>
     <div class="form-group">
-        <div class="col-3 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="lgNormal">
-            <label class="form-check-label" for="inlineCheckbox1">Longevidad Normal</label>
-          </div>
-          <div class="col-3 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Anfibio">
-            <label class="form-check-label" for="inlineCheckbox2">Anfibio</label>
-          </div>
-          <div class="col-3 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Vertebrado">
-            <label class="form-check-label" for="inlineCheckbox3">Vertebrado</label>
-          </div>
+      <h5>Estructura</h5>
+      <select class="custom-select" name="estructura" id="estructura">
+        <option value="0" selected>Selecciona Estructura...</option>
+        <option value="vertebrado">Vertebrado</option>
+        <option value="invertebrado">Invertebrado</option>
+      </select>
     </div>
     <div class="form-group">
-        <div class="col-3 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="lgAlta">
-            <label class="form-check-label" for="inlineCheckbox1">Longevidad Alta</label>
-          </div>
-          <div class="col-3 form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Reptil">
-            <label class="form-check-label" for="inlineCheckbox2">Reptil</label>
-          </div>
+      <h5>Grupo Animal</h5>
+      <select class="custom-select" name="grupo" id="grupo">
+        <option value="0" selected>Selecciona Grupo ...</option>
+        <option value="mamifero">Mamífero</option>
+        <option value="reptil">Reptil</option>
+        <option value="pez">Pez</option>
+        <option value="molusco">Molusco</option>
+        <option value="ave">Ave</option>
+      </select>
+
     </div>
     <div class="form-group">
-        <p>El <input type="text" id="animal"> </input> posee esas caracteristicas</p>
+      <h5>Tamaño</h5>
+      <select class="custom-select" id="tamano" name="tamano">
+        <option value="0" selected>Selecciona Tamaño ...</option>
+        <option value="grande">Grande</option>
+        <option value="pequeno">Pequeño</option>
+      </select>
     </div>
     <div class="form-group">
-        <button class="btn btn-success">Consultar</button>
+      <h5>Velocidad</h5>
+      <select class="custom-select" id="velocidad" name="velocidad">
+        <option value="0" selected>Selecciona Velocidad ...</option>
+        <option value="lento">Lento</option>
+        <option value="normal">Normal</option>
+        <option value="rapido">Rapido</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <h5>Poblacion</h5>
+      <select class="custom-select" id="poblacion" name="poblacion">
+        <option value="0" selected>Selecciona poblacion ...</option>
+        <option value="extinto">Extinto</option>
+        <option value="vulnerable">Vulnerable</option>
+        <option value="peligro">Peligro</option>
+      </select>
+
+    </div>
+  
+    
+    <div class="form-group">
+      <div></div>
+      <h5>Generalidades</h5>
+
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineCheckbox2" name="molusco" value="terrestre">
+        <label class="form-check-label" for="inlineCheckbox2">Terrestre</label>
+      </div>
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineCheckbox2" name="molusco" value="marino">
+        <label class="form-check-label" for="inlineCheckbox2">Marino</label>
+      </div>
+
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="escamas" value="escamas">
+        <label class="form-check-label" for="inlineCheckbox2">Escamas</label>
+      </div>
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="huevos" name="huevos">
+        <label class="form-check-label" for="inlineCheckbox2">Huevos</label>
+      </div>
+
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineCheckbox2" value="vuela" name="tipo_ave">
+        <label class="form-check-label" for="inlineCheckbox2">Vuela</label>
+      </div>
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineCheckbox2" value="no_vuela" name="tipo_ave">
+        <label class="form-check-label" for="inlineCheckbox2">No Vuela</label>
+      </div>
+      
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineCheckbox2" value="caliente" name="tipo_sangre">
+        <label class="form-check-label" for="inlineCheckbox2">Sangre Caliente</label>
+      </div>
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="radio" id="inlineCheckbox2" value="fria" name="tipo_sangre">
+        <label class="form-check-label" for="inlineCheckbox2">Sangre Fría</label>
+      </div>
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="leche" name="leche">
+        <label class="form-check-label" for="inlineCheckbox2">Toma Leche</label>
+      </div>
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="vida" name="vida">
+        <label class="form-check-label" for="inlineCheckbox2">Tiene Vida</label>
+      </div>
+ 
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="siente" name="siente">
+        <label class="form-check-label" for="inlineCheckbox2">Siente</label>
+      </div>
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="respira" name="respira">
+        <label class="form-check-label" for="inlineCheckbox2">Respira</label>
+      </div>
+      <div class="col-3 form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="agua" name="agua">
+        <label class="form-check-label" for="inlineCheckbox2">Vive en Agua</label>
+      </div>
+    </div>
+          
+
+
+    <div class="form-group">
+      <h5>Ingrese un animal en específico</h5>
+        <p>El <input type="text" name="nomb"  id="nomb"> </input> posee esas caracteristicas</p>
+    </div>
+    <div class="form-group">
+        <button  class="btn btn-success">Consultar</button>
     </div>
   </form>
+
     
+<!--Tabla de estudiantes-->
+<div class="col-12 ">
+  <table id="example" class="table table-striped table-bordered" style="width:100%">
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Nombre Cientifico</th>
+              <th>Peso Maximo</th>
+              <th>Longitud Maxima</th>
+              <th>Años Maximo</th>
+              <th>Velocidad</th>
+              <th>Poblacion en Libertad</th>
+              <th>Grupo</th>
+              <th>Estructura</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% animales.forEach(animal => { %>
+          <tr>
+              <td><%= animal.nombre_comun %></td>
+              <td><%= animal.nombre_cientifico %></td>
+              <td><%= animal.peso_max %></td>
+              <td><%= animal.altura_max %></td>
+              <td><%= animal.anios_max %></td>
+              <td><%= animal.velocidad_max %></td>
+              <td><%= animal.poblacion_libre %></td>
+              <td><%= animal.nombre_grupo %></td>
+              <td><%= animal.nombre_estructura %></td>
+              
+          </tr>
+          <% })%>
+      </tbody>
+  </table>
+</div>
+<!--Fin tabla estudiantes-->
+  
 
 
 <!--Fin tabla estudiantes-->
 <%- include("partials/footer")  %>
+
 <%- include("partials/script")  %>
+

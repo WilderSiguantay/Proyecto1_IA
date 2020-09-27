@@ -1,39 +1,76 @@
-const conexion = require("../db")
+const conexion = require("../db");
+var pl = require("tau-prolog");
+var session = pl.create(1000);
+
+session.consult("./prolog/bdc.pl", {
+  success: function() { console.log("Cargado Correctamente") },
+  error: function(err) { console.log("Cargado Incorrectamente")}
+});
 
 
-module.exports = {
-    async insertar(nombre, carne, dpi, correo, semestre, año, numerogrupo) {
-        let resultados = await conexion.query(`insert into privado
-        (nombre, carne, dpi, correo, semestre, anio, numerogrupo)
-        values
-        ($1, $2, $3, $4, $5,$6,$7)`, [nombre, Number(carne),Number(dpi) ,correo, Number(semestre) , Number(año) , Number(numerogrupo)]);
-        return resultados;
-    },
-    async obtenerTodos(){
-        const resultados = await conexion.query(`SELECT nombre_comun, nombre_cientifico, nombre_grupo, nombre_estructura FROM ANIMAL as A, GRUPO AS G, ESTRUCTURA AS E
-        WHERE A.GRUPO_id_grupo = G.id_grupo AND
-        G.ESTRUCTURA_id_estructura = E.id_estructura;`);
-        return resultados.rows;
-    },
-    async obtener(carne, semestre,año) {
-        const resultados = await conexion.query(`select id, nombre, carne, dpi, correo, 
-        semestre, anio, numerogrupo from privado where carne = $1 and semestre = $2 and anio = $3`, [carne,semestre,año]);
-        return resultados.rows;
-    },
-    async obtenerPorGrupo(numerogrupo) {
-        const resultados = await conexion.query(`select * from privado where numerogrupo = $1`, [numerogrupo]);
-        return resultados.rows;
-    },
-    async actualizar(id, nombre, precio) {
-        const resultados = conexion.query(`update productos
-        set nombre = $1,
-        precio = $2
-        where id = $3`, [nombre, precio, id]);
-        return resultados;
-    },
-    async eliminar(id) {
-        const resultados = conexion.query(`delete from productos
-        where id = $1`, [id]);
-        return resultados;
-    },
+var respuesta = [];
+
+
+async function consultaProlog(cadena_consulta){
+    var resp = [];
+    var temp = [];
+    console.log(cadena_consulta);
+    // Mostrar respuestas
+    session.query(cadena_consulta);
+      // start the query loop
+    session.answers( (x) => resp.push(dividirCadena(pl.format_answer(x),";") ));
+
+    return new Promise(resolve => {
+        setTimeout(() => {
+            if(resp.length>0){
+                resolve(resp)
+            }else{
+             resolve("ERROR EN LA SOLICITUD")   
+            }
+        }, 1500);
+    });
+  }
+  
+  
+function dividirCadena(cadenaADividir,separador) {
+      console.log(cadenaADividir);
+      if(cadenaADividir=="true ;"){
+        return "Si posee estas caracteristicas";
+      }else if(cadenaADividir =="false."){
+        return "No hay ningun animal con esas caracteristicas";
+      }else{
+          
+      var arrayDeCadenas = cadenaADividir.split(separador);
+      var arrayFinal = [];
+      arrayDeCadenas.forEach(function(elemento, indice) {
+          arrayFinal.push(elemento.split(","));
+          
+      })
+      var arrayIDS = [];
+      arrayFinal.forEach(function(elemento,indice){
+              if(elemento[1]!==undefined){
+                  arrayIDS.push(elemento[1].split("="));
+              }
+      });
+      }  
+
+     /* arrayIDS.forEach(function(elemento, indice){
+        console.log(elemento);
+      });*/
+      respuesta = arrayIDS;
+      return respuesta;
+    }
+
+//CONSULTA A LA BASE DE DATOS
+ async function consultar(cadenaConsulta) {
+    const resultados = await conexion.query(cadenaConsulta);
+    return resultados.rows;
 }
+
+
+
+    
+        
+
+
+module.exports = {consultar, dividirCadena,consultaProlog};

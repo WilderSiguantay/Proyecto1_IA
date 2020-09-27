@@ -37,3 +37,6 @@ Por defecto trae el manejador jade, pero vamos a cambiarlo y usar ejs por motivo
 para instalar este manejador de plantillas necesitamos los siguientes comandos
 `npm install ejs -D`
 `npm install ejs-mate -D`
+
+## INSTALAMOS Modulo de PROLOG
+`npm install tau-prolog -D `
