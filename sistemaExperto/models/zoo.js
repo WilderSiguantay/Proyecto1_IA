@@ -27,7 +27,7 @@ async function consultaProlog(cadena_consulta){
             }else{
              resolve("ERROR EN LA SOLICITUD")   
             }
-        }, 1500);
+        }, 2000);
     });
   }
   
@@ -35,9 +35,9 @@ async function consultaProlog(cadena_consulta){
 function dividirCadena(cadenaADividir,separador) {
       console.log(cadenaADividir);
       if(cadenaADividir=="true ;"){
-        return "Si posee estas caracteristicas";
+        return "Si posee estas caracteristicas,";
       }else if(cadenaADividir =="false."){
-        return "No hay ningun animal con esas caracteristicas";
+        return "No posee esas caracteristicas,";
       }else{
           
       var arrayDeCadenas = cadenaADividir.split(separador);

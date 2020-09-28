@@ -7,12 +7,12 @@ var cadenaRespuesta = [];
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { animales: '',respuesta : "falso" });
 });
 
 /* GET home page. */
 router.get('/consultar', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { animales: '', respuesta : "falso" });
 });
 
 
@@ -109,12 +109,12 @@ if(molusco!== undefined){
 
 //ESCAMAS
 if(escamas!== undefined){
-  cadenaConsulta += ",tienen_escamas(_, Y)"
+  cadenaConsulta += ",tienen_escamas(_, "+nombre2+")"
 }
 
 //HUEVOS
 if(huevos!== undefined){
-  cadenaConsulta += ",ponen_huevos("+nombre2+",Y)"
+  cadenaConsulta += ",ponen_huevos(_,"+nombre2+")"
 }
 
 
@@ -131,16 +131,16 @@ if(tipo_ave!==undefined){
 if(tipo_sangre!== undefined){
 
   if(tipo_sangre== "caliente"){
-    cadenaConsulta += ",sangre_caliente(_,Y)"
+    cadenaConsulta += ",sangre_caliente(_,"+nombre2+")"
   }else{
-    cadenaConsulta +=",sangre_fria(_,Y)"
+    cadenaConsulta +=",sangre_fria(_,"+nombre2+")"
   }
 }
 
 
 //leche
 if(leche!== undefined){
-  cadenaConsulta += ",toman_leche(_,Y)"
+  cadenaConsulta += ",toman_leche(_,"+nombre2+")"
 }
 
 //VIDA
@@ -157,7 +157,7 @@ if(siente!== undefined){
 
 //AGUA
 if(agua!== undefined){
-  cadenaConsulta += ",viven_agua(_,Y)"
+  cadenaConsulta += ",viven_agua(_,"+nombre2+")"
 }
 
 //RESPIRA
@@ -189,11 +189,31 @@ if(respira!== undefined){
     
   });
   cadenaConsultaBD += ";"
+  console.log("TAMANO CADENA" +cadenaConsultaBD.length);
 
-  zooModel.consultar(cadenaConsultaBD);
+  if(cadenaConsultaBD.length>1){
+  //INICIA
   zooModel.consultar(cadenaConsultaBD).then(animales => {console.log(animales);
-    res.render("index", {animales: animales,});
-  })
+    res.render("index", {animales: animales,respuesta : "falso"});
+  }).catch(err => {
+    console.log(err);
+    return res.status(500).send("Error obteniendo datos");
+  });
+  //TERMINA
+  }else{
+    var arrayFinal =[];
+    var animales;
+    cadenaRespuesta.forEach(function(elemento,indice){
+      arrayFinal.push(elemento.split(","))
+    });
+  
+      animales = "El " +nomb+ " "+ arrayFinal[0];
+    
+
+    console.log("RESPUESTA ENVIADA A SERVIDOR "+ animales);
+    res.render("index", {animales: animales, respuesta : "true"});
+  }
+
 
 });
 

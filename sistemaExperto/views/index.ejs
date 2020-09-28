@@ -146,30 +146,47 @@
           <tr>
               <th>Nombre</th>
               <th>Nombre Cientifico</th>
-              <th>Peso Maximo</th>
-              <th>Longitud Maxima</th>
+              <th>Peso Maximo (KG)</th>
+              <th>Longitud Maxima (M)</th>
               <th>Años Maximo</th>
-              <th>Velocidad</th>
+              <th>Velocidad (KM/H)</th>
               <th>Poblacion en Libertad</th>
               <th>Grupo</th>
               <th>Estructura</th>
           </tr>
       </thead>
       <tbody>
-          <% animales.forEach(animal => { %>
+        <% if (respuesta == 'true'){%>
           <tr>
-              <td><%= animal.nombre_comun %></td>
-              <td><%= animal.nombre_cientifico %></td>
-              <td><%= animal.peso_max %></td>
-              <td><%= animal.altura_max %></td>
-              <td><%= animal.anios_max %></td>
-              <td><%= animal.velocidad_max %></td>
-              <td><%= animal.poblacion_libre %></td>
-              <td><%= animal.nombre_grupo %></td>
-              <td><%= animal.nombre_estructura %></td>
-              
+            <td><%= animales %></td>
           </tr>
-          <% })%>
+        <% } else  if(animales.length > 0){%>
+
+          <% animales.forEach(animal => { %>
+              <tr>
+                  <td><%= animal.nombre_comun %></td>
+                  <td><%= animal.nombre_cientifico %></td>
+                  <td><%= animal.peso_max %></td>
+                  <td><%= animal.altura_max %></td>
+                  <td><%= animal.anios_max %></td>
+                  <td><%= animal.velocidad_max %></td>
+                  <td><%= animal.poblacion_libre%></td>
+                  <td><%= animal.nombre_grupo%></td>
+                  <td><%= animal.nombre_estructura%></td>
+
+                  
+              </tr>
+              <% })%>
+          <%} else{%>
+            
+              <td>Sin datos</td>
+              <td>Sin datos</td>
+              <td>Sin datos</td>
+              <td>Sin datos</td>
+              <td>Sin datos</td>
+              <td>Sin datos</td>
+              <td>Sin datos</td>
+          <%}%>
       </tbody>
   </table>
 </div>

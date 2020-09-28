@@ -123,7 +123,7 @@ puede_sentir(X) :- animal(X,_,_,_,_,_,_,_).
 
 
 % Todos los reptiles tienen sangre fría.
-sangre_fria(X, Y):- pertenece_a(X, Y), X=reptil.
+sangre_fria(X,Y):- pertenece_a(X, Y), X=reptil.
 
 % Algunos moluscos son marinos y otros son terrestres.
 moluscos_marinos(X) :- animal(X,_,_,_,_,_,_,Y), Y=marino. 
